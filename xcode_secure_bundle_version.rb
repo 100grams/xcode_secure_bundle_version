@@ -26,7 +26,7 @@ version     = lines[start, endIndex]
 
 # Copy the bundle version number to the header file
 lines = IO.readlines(headerFile).join
-lines.gsub! /(#define kBundleVersion\s)(\w.+)/, "\\1#{version}"
+lines.gsub! /(#define kBundleVersion\s)(\w.+)/, "\\1@\"#{version}\""
 File.open(headerFile, 'w') {|f| f.puts lines}
 
 # Report to the user
