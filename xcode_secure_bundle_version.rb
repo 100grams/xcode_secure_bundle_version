@@ -28,7 +28,7 @@ version = IO.readlines(plist_file)[target_line].scan(/<string>(.*?)<\/string>/)
 # Copy the bundle version number to the header file
 file = IO.readlines(header_file).join
 if file =~ /#define kBundleVersion/
-    file.gsub!(/(#define kBundleVersion\s)(\w.+)/, "\\1@\"#{version}\"")
+    file.gsub!(/(#define kBundleVersion\s)(.+)/, "\\1@\"#{version}\"")
 else
     file << "\n// Secure version number, do not edit manually, handled by script! \n#define kBundleVersion #{version}"
 end
